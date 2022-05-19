@@ -33,7 +33,9 @@ class OrderDetailView(DetailView, AjaxMixin):
         )
 
         response['intentSecret'] = payment_intent.client_secret
-        response['confirmPaymentUrl'] = reverse('cart:order-status')
+        response['confirmPaymentUrl'] = request.build_absolute_uri(
+            reverse('cart:order-status')
+        )
         return self.ajax_response(response)
 
 

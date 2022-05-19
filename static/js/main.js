@@ -42,6 +42,7 @@ $(document).ready(async function () {
                 url: '/v2/cart/remove/',
                 data
             });
+
     let stripePk = $('input[name=stripe_pk]').val();
 
     // v1
@@ -167,6 +168,7 @@ $(document).ready(async function () {
 
                 $('#payment-form').submit(async function (e) {
                     e.preventDefault();
+                    console.log(response.confirmPaymentUrl)
 
                     const error = await stripe.confirmPayment({
                         elements,
