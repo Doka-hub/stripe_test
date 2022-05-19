@@ -170,7 +170,7 @@ $(document).ready(async function () {
                     const error = await stripe.confirmPayment({
                         elements,
                         confirmParams: {
-                            return_url: 'http://127.0.0.1:8000/v2/order/status/',
+                            return_url: '/v2/order/status/',
                         },
                     });
 
