@@ -20,7 +20,7 @@
 
 
 ## Начало
-- python 3.9
+- python 3.7+
 - скопировать файл `envs/.env.dist` в корневую директорию проекта 
 - создать виртуальное окружение `python -m venv/virtualenv env` 
 - установить зависимости `pip install -r requirements.txt`
