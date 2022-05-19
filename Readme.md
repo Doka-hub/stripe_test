@@ -21,6 +21,7 @@
 
 ## Начало
 - скопировать файл `envs/.env.dist` в корневую директорию проекта 
+- создать виртуальное окружение `python -m venv/virtualenv env` 
 - установить зависимости `pip install -r requirements.txt`
 - `python manage.py migrate` -> `python manage.py runserver`
 - при запуске будет создан админ пользователь (login: `admin`, password: `1`)
