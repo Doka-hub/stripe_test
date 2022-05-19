@@ -42,10 +42,11 @@ $(document).ready(async function () {
                 url: '/v2/cart/remove/',
                 data
             });
+    let stripePk = $('input[name=stripe_pk]').val();
 
     // v1
     if ($('#checkoutCreateForm').length) {
-        let stripe = Stripe('pk_test_51L0CAGClo19DMRp7r1VtY7jw3Yx4fSMGgtYpitx8TOsn7pUngDjvJGiAYOlOSaQfgFbBY3YQ7YZ6EpC65qu99nVm00NsEzfIYA');
+        let stripe = Stripe(stripePk);
 
         $('#checkoutCreateForm').submit(async function (e) {
             e.preventDefault();
@@ -138,7 +139,7 @@ $(document).ready(async function () {
     }
 
     if ($('#checkoutCreateFormV2').length) {
-        let stripe = Stripe('pk_test_51L0CAGClo19DMRp7r1VtY7jw3Yx4fSMGgtYpitx8TOsn7pUngDjvJGiAYOlOSaQfgFbBY3YQ7YZ6EpC65qu99nVm00NsEzfIYA');
+        let stripe = Stripe(stripePk);
 
         $('#checkoutCreateFormV2').submit(async function (e) {
             e.preventDefault();
@@ -170,7 +171,7 @@ $(document).ready(async function () {
                     const error = await stripe.confirmPayment({
                         elements,
                         confirmParams: {
-                            return_url: '/v2/order/status/',
+                            return_url: response.confirmPaymentUrl,
                         },
                     });
 
@@ -188,7 +189,7 @@ $(document).ready(async function () {
     }
 
     if ($('#status').length) {
-        let stripe = Stripe('pk_test_51L0CAGClo19DMRp7r1VtY7jw3Yx4fSMGgtYpitx8TOsn7pUngDjvJGiAYOlOSaQfgFbBY3YQ7YZ6EpC65qu99nVm00NsEzfIYA'),
+        let stripe = Stripe(stripePk),
             clientSecret = new URLSearchParams(window.location.search).get(
                 'payment_intent'
             ),

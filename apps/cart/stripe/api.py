@@ -48,6 +48,5 @@ class Stripe:
 
     @classmethod
     def retrieve_payment_intent(cls, id_):
-        print(id_)
         intent = cls._stripe.PaymentIntent.retrieve(id_)
         return intent
