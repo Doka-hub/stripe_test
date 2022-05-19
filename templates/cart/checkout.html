@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Заказ {{ object.uuid }}
+{% endblock %}
+
+{% block stripe %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block content %}
+    {% csrf_token %}
+    <div id="order" class="order">
+        <h1 class="order-title">Заказ {{ object.id }} {% if object.ordered %}✅ <p>оплачен</p>{% endif %}</h1>
+        <h4 class="order-amount">Стоимость: {{ object.get_amount }} USD</h4>
+        <table class="order-items">
+            <thead>
+                <tr>
+                    <td>Название</td>
+                    <td>Количество</td>
+                    <td>Стоимость</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in object.items.all %}
+                    <tr>
+                        <td>{{ item }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.get_amount }} USD</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if not object.ordered %}
+            <form id="checkoutCreateFormV2"
+                  action="{% url 'cart:order-detail' object.id %} " method="POST">
+                {% csrf_token %}
+                    <input type="submit" value="Оплатить">
+
+            </form>
+            <form id="payment-form">
+                <div id="payment-element">
+                </div>
+                <button id="submit" style="display: none">Submit</button>
+                <div id="error-message">
+                </div>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

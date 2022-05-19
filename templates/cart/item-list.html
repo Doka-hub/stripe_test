@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Список товаров
+{% endblock %}
+
+{% block content %}
+    {% csrf_token %}
+    <div id="items" class="items">
+        <h1 class="items-title">Товары</h1>
+
+        <div id="itemList" class="items-list">
+            {% for object in object_list %}
+                <div class="items-list__item">
+                    <div class="items-list__item-title">{{ object }}</div>
+                    <div class="items-list__item-description">{{ object.description }}</div>
+                    <div class="items-list__item-price">{{ object.price }} USD</div>
+                    <div class="items-list__item-add_to_cart">
+                        <a target="_blank" href="{% url 'cart:cart-add'%}" data-item-id="{{ object.id }}">добавить в корзину</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="cart_preview">
+        <img src="/static/images/cart.png" alt="">
+    </div>
+    <div id="cart" class="cart">
+        <div class="cart-top">
+        <div class="cart-close">x</div>
+            <h1 class="cart-title">Корзина <p>({{ cart.get_amount|stringformat:".2f" }} USD)</p></h1>
+{#            <h4 class="cart-amount"></h4>#}
+            <table id="cartList" class="cart-list">
+                <thead>
+                    <tr>
+                        <td>Название</td>
+                        <td>Кол-во</td>
+                        <td>Стоимость</td>
+                        <td>Действие</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cart_item in cart %}
+                        <tr data-item-id="{{ cart_item.item.id }}">
+                            <td>{{ cart_item.item.name }}</td>
+                            <td>{{ cart_item.quantity }}</td>
+                            <td>{{ cart_item.amount|stringformat:".2f" }} USD</td>
+                            <td><a target="_blank" href="{% url 'cart:cart-remove'%}" class="cart-list__item-delete" data-item-id="{{ cart_item.item.id }}">удалить</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="cart-bottom">
+            <button class="cart-order">Заказать</button>
+        </div>
+    </div>
+{% endblock %}

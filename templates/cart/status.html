@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Заказ {{ object.uuid }}
+{% endblock %}
+
+{% block stripe %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block content %}
+    <div id="status">
+        <div id="message">
+
+        </div>
+    </div>
+{% endblock %}

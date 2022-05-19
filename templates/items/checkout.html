@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Товар {{ object.name }}
+{% endblock %}
+
+{% block stripe %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="item">
+        Название: {{ object.name }}<br/>
+        Описание: {{ object.description }}<br/>
+        Цена: {{ object.price }} USD<br/>
+        <form id="checkoutCreateForm" action="{% url 'items:checkout-create' object.id %} " method="GET">
+            <input type="hidden" name="object_id" value="{{ object.id }}">
+            <button type="submit">Buy</button>
+        </form>
+    </div>
+{% endblock %}

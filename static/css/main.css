@@ -1,0 +1,286 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+html {
+	display: block;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	color: #000;
+	font-size: 18px;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 1.15;
+	font-family: 'Roboto', sans-serif;
+    background-color: #f1f6ff;
+
+    min-height: 1000px;
+
+    position: relative;
+}
+
+/* v1 */
+.item {
+    margin: 100px auto 0;
+
+    width: 80%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1, h2, h3, h4, h5, p {
+    display: inline-block;
+}
+
+button, input[type=submit] {
+    padding: 5px 10px;
+
+    border: 1px solid transparent;
+    border-radius: 2px;
+
+    background-color: #ff74f4;
+    color: #fff;
+
+    cursor: pointer;
+}
+
+button:active, input[type=submit]:active {
+    background-color: #ba5fb3;
+}
+
+li {
+	list-style-type: none;
+}
+
+table {
+    padding: 5px;
+
+    width: 100%;
+
+    border-radius: 3px;
+    background-color: #e8efff;
+}
+
+td {
+    padding: 10px;
+
+    background-color: #f1f6ff;
+
+    border: none;
+}
+
+#order {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.order-title {
+    margin-top: 100px;
+}
+
+.order-title p {
+    display: flex;
+    justify-content: center;
+
+    font-size: 14px;
+}
+
+.order-amount {
+    margin-top: 50px;
+}
+
+.order-items {
+    margin-top: 25px;
+}
+
+#checkoutCreateFormV2 {
+    margin: 12px 0;
+}
+
+#payment-form {
+    min-width: 500px;
+    max-width: 800px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#payment-form button {
+    margin-top: 12px;
+    padding: 10px 0;
+}
+
+#status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+#status #message {
+    margin-top: 100px;
+}
+
+#items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.items-title {
+    margin-top: 50px;
+}
+
+.items-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 100%;
+
+    margin-top: 20px;
+}
+
+.items-list__item {
+    width: 250px;
+    height: 300px;
+
+    background-color: #e8efff;
+
+    margin: 10px;
+    padding: 10px;
+}
+
+#cart_preview {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    margin-bottom: 20px;
+    margin-left: 20px;
+
+    padding: 15px 10px;
+
+    background-color: #e8efff;
+
+    border-radius: 100%;
+
+    width: 100px;
+    height: 100px;
+
+    cursor: pointer;
+    transition: .25s;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+#cart_preview:hover {
+    transform: scale(0.9);
+
+    transition: .5s;
+}
+
+#cart_preview img {
+    position: absolute;
+
+    width: 70px;
+
+    top: 10px;
+    left: 15px;
+}
+
+.cart {
+    position: fixed;
+    display: flex;
+    visibility: hidden;
+
+    left: -100px;
+    bottom: -100px;
+
+    padding: 15px 10px;
+
+    background-color: #e8efff;
+
+    border-radius: 2px;
+
+    width: 350px;
+    min-height: 400px;
+
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+.cart.active {
+    visibility: visible;
+    animation: ease;
+
+    bottom: 0;
+    left: 0;
+
+    margin-bottom: 20px;
+    margin-left: 20px;
+
+    transition: visibility 1s, opacity .23s;
+}
+
+.cart-close {
+    position: absolute;
+
+    cursor: pointer;
+
+    right: 0;
+    top: 0;
+
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.cart-title {
+    display: flex;
+    align-items: end;
+}
+
+.cart-title p {
+    font-size: 14px;
+    font-weight: bold;
+
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.cart-list {
+    margin-top: 10px;
+
+    font-size: 12px;
+}
+
+.cart-bottom {
+    display: flex;
+    justify-content: right;
+}
