@@ -127,7 +127,7 @@ HTML страница со статусом оплаты Payment Intent.
 
 <h3><code>GET /v2/order/status/check/</code></h3>
 Получение статуса оплаты Payment Intent.  
-Обновление статуса оплаты `Order`
+Обновление статуса оплаты `Order`  
 
 
 `Params`
